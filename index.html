@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Tidke | Data Scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --accent: #f43f5e;
+            --glass: rgba(255, 255, 255, 0.7);
+            --border: rgba(255, 255, 255, 0.4);
+            --text-dark: #0f172a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: #f8fafc;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+        }
+
+        /* --- ADVANCED ANIMATED BACKGROUND --- */
+        .bg-blobs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%);
+            filter: blur(80px);
+            border-radius: 50%;
+            animation: moveBlobs 25s infinite alternate ease-in-out;
+        }
+
+        .blob-1 { top: -10%; left: -10%; }
+        .blob-2 { bottom: -10%; right: -10%; animation-delay: -5s; }
+        .blob-3 { top: 40%; left: 30%; width: 400px; height: 400px; background: rgba(244, 63, 94, 0.1); }
+
+        @keyframes moveBlobs {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(100px, 50px) scale(1.1); }
+            100% { transform: translate(-50px, 150px) scale(0.9); }
+        }
+
+        /* --- FLOATING NAVBAR --- */
+        .navbar {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 900px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border-radius: 100px;
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar:hover { width: 95%; background: rgba(255, 255, 255, 0.9); }
+
+        .logo { font-weight: 800; font-size: 1.5rem; color: var(--primary); letter-spacing: -1px; }
+
+        .nav-links { display: flex; gap: 8px; list-style: none; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: 0.3s;
+            font-size: 0.85rem;
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        /* --- HERO --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 160px 20px 60px; }
+
+        .hero {
+            background: var(--glass);
+            border-radius: 40px;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-img-box {
+            width: 240px;
+            height: 240px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            border-radius: 35% 65% 70% 30% / 30% 30% 70% 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: white;
+            font-weight: 800;
+            animation: morph 8s ease-in-out infinite;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 35% 65% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        .hero h1 { font-size: 4rem; line-height: 1; margin-bottom: 15px; }
+        .hero h1 span { 
+            background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradientText 3s linear infinite;
+        }
+
+        @keyframes gradientText { to { background-position: 200% center; } }
+
+        .contact-pills { display: flex; gap: 12px; flex-wrap: wrap; margin: 25px 0; }
+        .pill { 
+            background: white; 
+            padding: 10px 20px; 
+            border-radius: 100px; 
+            font-size: 0.9rem; 
+            font-weight: 600; 
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+        .pill:hover { border-color: var(--primary); transform: scale(1.05); }
+
+        /* --- SECTION REVEAL ANIMATION --- */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        section {
+            background: var(--glass);
+            border-radius: 40px;
+            padding: 50px;
+            margin-bottom: 50px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            backdrop-filter: blur(10px);
+        }
+
+        h2 { font-size: 2.2rem; margin-bottom: 35px; color: #1e293b; }
+
+        /* --- PROJECTS CARDS --- */
+        .project-card {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 25px;
+            border: 1px solid white;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: white;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 5px; height: 100%;
+            background: var(--primary);
+        }
+
+        .project-tech-tag {
+            background: #eef2ff;
+            color: var(--primary);
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        /* --- SKILLS GRID --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .skill-box { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 30px; 
+            transition: 0.3s; 
+            border: 1px solid #f1f5f9;
+        }
+        .skill-box:hover { background: var(--primary); color: white; }
+        .skill-box:hover h3 { color: white; }
+
+        /* --- AWARDS --- */
+        .award-card {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .award-card i { font-size: 3rem; opacity: 0.2; position: absolute; right: 30px; top: 30px; }
+
+        /* --- SOCIAL POP --- */
+        .social-row a {
+            display: inline-flex;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 15px;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-right: 15px;
+            transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .social-row a:hover {
+            transform: rotate(360deg) scale(1.2);
+            background: var(--primary);
+            color: white;
+        }
+
+      
+            /* Add this inside your <style> tag */
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* This ensures your face isn't stretched */
+            border-radius: inherit; /* This makes the image morph along with the container */
+        }
+
+            /* Optional: If your image has a background, you might want to add a small padding */
+        .profile-img-box {
+            overflow: hidden; /* Keeps the image inside the morphing shape */
+        }
+          /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding: 40px 20px; }
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .profile-img-box { width: 180px; height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">SHUBHAM.T</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#awards">Awards</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="hero" id="home">
+           <div class="profile-img-box">
+        <img src="photo1.jpg" alt="Shubham Tidke" class="profile-img" onerror="this.style.display='none'">
+        <span class="profile-fallback" style="position:absolute; z-index:-1;">ST</span>
+    </div>
+            <div class="hero-text">
+                <h1>Hello, I'm <span>Shubham</span></h1>
+                <p style="font-size: 1.5rem; color: #64748b; font-weight: 600;">Data Science & ML </p>
+                <div class="contact-pills">
+                    <span class="pill"><i class="fas fa-phone"></i> +91-7498483302</span>
+                    <span class="pill"><i class="fas fa-envelope"></i> tidkeshubham826@gmail.com</span>
+                </div>
+                <div class="social-row">
+                    <a href="https://www.linkedin.com/in/shubham-tidke-0a6ab12a1" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Shubham-tidke2005" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal" id="about">
+            <h2><i class="fas fa-fingerprint"></i> The Story So Far</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8; color: #475569;">
+                I am a computer engineering student driven by the challenge of extracting intelligence from data. 
+                With a <strong>9.2 CGPA</strong>, I bridge the gap between complex algorithms and practical, 
+                high-performance software solutions. I thrive in fast-paced environments where data-driven 
+                decisions are the core of growth.
+            </p>
+        </section>
+
+        <section class="reveal" id="skills">
+            <h2><i class="fas fa-brain"></i> Mastery</h2>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <h3 style="color: var(--primary); margin-bottom:10px;">Programming</h3>
+                    <p>Python (Advanced), C++, Java, SQL</p>
+                </div>
+                <div class="skill-box">
+                    <h3 style="color: var(--primary); margin-bottom:10px;">Data Stack</h3>
+                    <p>Pandas, NumPy, Scikit-Learn, Power BI, Matplotlib, Seaborn</p>
+                </div>
+                <div class="skill-box">
+                    <h3 style="color: var(--primary); margin-bottom:10px;">Engineering</h3>
+                    <p>FastAPI, SQLite, MySQL, VS Code, Git/GitHub, Jupyter</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal" id="projects">
+            <h2><i class="fas fa-project-diagram"></i> Key Projects</h2>
+            
+            <div class="project-card">
+                <div style="margin-bottom: 15px;"><span class="project-tech-tag">ML + SQLite</span></div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Disease Prediction System</h3>
+                <ul style="color: #475569; padding-left: 20px;">
+                    <li>Developed an end-to-end ML model using <strong>Decision Tree Classifiers</strong> to predict diseases based on 132+ symptoms.</li>
+                    <li>Utilized SQLAlchemy and SQLite to manage structured patient and symptom data efficiently.</li>
+                    <li>Engineered a modular workflow for data cleaning, multi-label encoding, and predictive inference.</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <div style="margin-bottom: 15px;"><span class="project-tech-tag">EDA + Business BI</span></div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Uber Ride Data Analysis</h3>
+                <ul style="color: #475569; padding-left: 20px;">
+                    <li>Conducted deep-dive Exploratory Data Analysis to identify demand peaks and driver efficiency.</li>
+                    <li>Built a <strong>Power BI Dashboard</strong> for real-time visualization of monthly ride trends and outlier detection.</li>
+                    <li>Used Z-Score normalization to remove noise and improve data integrity.</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <div style="margin-bottom: 15px;"><span class="project-tech-tag">Regression Models</span></div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Car Price Prediction</h3>
+                <ul style="color: #475569; padding-left: 20px;">
+                    <li>Engineered a high-accuracy regression model comparing Random Forest, Lasso, and Ridge algorithms.</li>
+                    <li>Implemented Feature Scaling and Label Encoding to handle complex categorical car data.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="reveal" id="awards">
+            <h2><i class="fas fa-star"></i> Achievements</h2>
+            <div class="award-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3 style="font-size: 1.5rem;">C-DAC Pune AI Bootcamp (2025)</h3>
+                <p>Secured <strong>A+ Grade (92/100)</strong> in deep-dive training for CV, NLP, and Deep Learning.</p>
+            </div>
+            <div class="award-card" style="background: linear-gradient(135deg, #db2777 0%, #f43f5e 100%);">
+                <i class="fas fa-trophy"></i>
+                <h3 style="font-size: 1.5rem;">Academic Excellence Award</h3>
+                <p>Second Topper at SNJB College with an outstanding <strong>9.73 CGPA</strong> in 2024.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Scroll Reveal Logic
+        const reveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+                const revealPoint = 100;
+                if (revealTop < windowHeight - revealPoint) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', reveal);
+        window.addEventListener('load', reveal);
+
+        // Smooth Scroll Active States
+        const navLinks = document.querySelectorAll('.nav-links a');
+        window.addEventListener('scroll', () => {
+            let current = "";
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute("id");
+                }
+            });
+            navLinks.forEach(a => {
+                a.classList.remove("active");
+                if (a.getAttribute("href") === `#${current}`) {
+                    a.classList.add("active");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
